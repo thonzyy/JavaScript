@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://localhost/html_prj/common/css/main_v20230906.css">
+<style type="text/css">
+
+
+</style>
+<script type="text/javascript">
+	var arr=["자바","오라클","JDBC","홍찬영","HTML","홍찬영","CSS"];
+	document.write(arr.indexOf("홍찬영")+"</br>");
+	document.write(arr.indexOf("jdbc"));
+	
+	//삭제 : splice(시작인덱스, 자를 방의 개수)
+	arr.splice(2,4);
+	
+	for(var i=0; i<arr.length; i++){
+		document.write(arr[i]+"</br>")
+	}//end for
+	
+	//배열 합치기 : ...배열명
+	var arr2=["JavaScript",...arr,"jQuery","VUE","JSP"];
+	for(var i=0; i<arr2.length; i++){
+		document.write(arr2[i]+"</br>")
+	}//end for
+</script>
+<body>
+
+</body>
+</html>
