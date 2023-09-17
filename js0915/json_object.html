@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://192.168.10.142/html_prj/common/css/main_v20230906.css">
+<style type="text/css">
+   
+</style>
+<script type="text/javascript">
+      window.onload=function() {
+        document.getElementById("btn1").addEventListener("click",useStringJson);
+        document.getElementById("btn2").addEventListener("click",useJson);
+      }
+
+
+      function useStringJson () {
+        var data="{name : '이동원', age:26, hobby:'수영'}";
+
+        alert(typeof(data));
+        //입력된 값을 객체로 바꿔준다 eval
+        var jsonObject=eval("("+data+")");
+        alert(typeof(jsonObject));
+
+        //값 추가
+        jsonObject.addr="서울시 성북구 정릉동";
+        jsonObject.hobby="바이크 라이딩";
+        jsonObject.brith=function() {alert("나의 생일은 오늘이다!!!."); return "생선 대환영!!!";}
+        //값 삭제
+        delete jsonObject.hobby;
+
+        //parsing
+        alert(jsonObject.name+" / "+jsonObject.age+" / "+jsonObject.hobby+" / "+jsonObject.addr);
+        //함수는 소괄호를 붙이지 않으면 함수 안의 내용이 문자열로 반환된다.
+        alert(jsonObject.birth());
+      }
+
+      function useJson () {
+        //JSONObject 생성
+        var jsonObject={name:"박상준",age:27,addr:"서울시 강남구 역삼동"};
+        alert(jsonObject);
+        //값 추가
+        jsonObject.hobby="LOL";
+        jsonObject.addr="경기도 수원시 영통구 영통동";
+        jsonObject.flag=true;
+        jsonObject.birth=function() {
+            var birth="2023-09-15"
+            return birth;
+        }
+
+        //값 삭제
+        delete jsonObject.hobby;
+        
+        //값 얻기 : parsing
+        alert(jsonObject.name+" / "+jsonObject.age+" / "+jsonObject.addr+" / "+jsonObject.hobby+" / "+jsonObject.flag );
+        //함수인 경우 ()를 붙이지 않으면 함수 안의 내용이 문자열로 반환된다.
+        alert(jsonObject.birth);
+        alert(jsonObject.birth());
+      }
+
+
+</script>
+</head>
+<body>
+    <input type="button" value="string jsonobject" class="btn" id="btn1"/>
+    <input type="button" value="jsonobject" class="btn" id="btn2"/>
+</body>
+</html>
