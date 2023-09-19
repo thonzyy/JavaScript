@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://192.168.10.142/html_prj/common/css/main_v20230906.css">
+<style type="text/css">
+   #table{border: 1px solid #333; border-spacing: 0px};
+
+   #addrTitle{width: 300px ;border: 1px solid #333; }
+   #nameTitle{width: 120px;border: 1px solid #333; }
+   #ageTitle{width: 80px ;border: 1px solid #333; }
+   .td{border: 1px solid #333;height: 30px};
+</style>
+<script type="text/javascript">
+      window.onload=function () {
+        document.getElementById("btn").addEventListener("click" , useJSONArray);
+      }
+      function useJSONArray() {
+        var jsonArr=[{name:"박상준",age:26,addr:"서울 시 강남구 역삼동"},{name:"홍찬영",age:27,addr:"서울시 도봉구 도봉동"},{name:"임태균",age:25,addr:"경기도 용인시 처인구"}]
+        var jsonObj;
+        var output="<table id='table'>";
+            output += "<tr><th id='nameTitle'>이름</th><th id='ageTitle'>나이</th><th id='addrTitle'>주소</th></tr>"
+            //  alert(jsonArr.length);
+        for (var i = 0 ; i <jsonArr.length; i++) {
+            //3. jsonArray에서 jsonobject 얻기
+            jsonObj = jsonArr[i];
+            output+="<tr>";
+                //4. parsing
+            output+="<td class='td'>"+jsonObj.name+"</td>";
+            output+="<td class='td'>"+jsonObj.age+"</td>";
+            output+="<td class='td'>"+jsonObj.addr+"</td>";
+            output+="</tr>";
+        }//end for
+        document.getElementById("output").innerHTML=output;
+      }
+</script>
+</head>
+<body>
+<input type="button" value="JSONArray사용 " class="btn" id="btn">
+<div id="output"></div>
+</body>
+</html>
