@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://192.168.10.142/html_prj/common/css/main_v20230906.css">
+<style type="text/css">
+   
+</style>
+<!-- jQuery CDN 시작 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!-- jQuery CDN 끝 -->
+<script type="text/javascript">
+    var arr=["강다연","박상준","송지하","홍찬영"];
+    $(function() {
+        $("#btn").click(function() {
+            var output="<ul>";
+            for(var i = 0 ; i<arr.length; i++){
+                output+="<li>"+arr[i]+"</li>";
+            }//end for
+            output +="</ul>";
+
+            $("#output").html(output);
+        })//click
+
+        $("#btn2").click(function() {
+            var output="<ul>";
+                $.each(arr, function(i,name){
+                    output+="<li><strong>"+name+"</strong><li>";
+                })//each
+            output +="</ul>";
+
+            $("#output").html(output);
+        })//click
+
+        $("#btn3").click(function(){
+            var output="<ul>";
+                //id가 sel인 대상(배열)의 모든 값을 얻기
+                $("#sel").each(function(i, opt) {
+                    output+="<li><strong>" +i+" : "+$(opt).val()+" / "+$(opt).is(":selected")+"</strong></li>";
+                })
+                output +="</ul>";
+
+                $("#output").html(output);
+        })
+
+        $("#btn4").click(function() {
+            var output="<ul>";
+
+                if($("[name='movie']:checked").length >3) {
+                    alert("영화는 3개까지만 선택할 수 있습니다.");
+                    return;
+             }//end if
+
+             $("[name='movie']:checked").each(function(i,check){
+                output+="<li><strong>" +$(check).val()+"</strong></li>"
+             })
+                // $("#movie").each(function(i, opt){
+                //     if( $(opt).is(":checked")==true) {
+                //         output+="<li><strong>" +$(opt).val()+"</strong></li>"
+                //     }
+                   
+                // })
+                output +="</ul>";
+                $("#output").html(output);
+        })
+    })
+</script>
+</head>
+<body>
+    <div>
+        <select name="sel" id="sel">
+            <option value="JavaSE">JavaSE</option>
+            <option value="Oralce DBMS">Oralce DBMS</option>
+            <option value="JDBC">JDBC</option>
+            <option value="HTML">HTML</option>
+            <option value="CSS">CSS</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="jQuery" selected="selected">jQuery</option>
+            <option value="JSP">JSP</option>
+        </select>
+
+        <div>
+            <input type="checkbox"  name="movie" value="천박사 퇴마연구소"/>천박사퇴마연구소
+            <input type="checkbox"  name="movie" value="거미집"/>거미집
+            <input type="checkbox"  name="movie" value="1947보스톤"/>1947보스톤
+            <input type="checkbox"  name="movie" value="플로라앤썬"/>플로라앤썬
+            <input type="checkbox"  name="movie" value="더 넌 2"/>더 넌 2
+            <input type="button"  value="영화선택" id="btn4" class="btn"/>
+            <!-- btn4가 눌려지면 선택된 영화를 divMovie에 <li>로 보여준다. 단 선택 영화가 3개 이상이라면 영화는 3개까지만 보여준다.를 alert창으로 보여주세요.-->
+        </div>
+        <div id="divMovie"></div>
+    </div>
+    <input type="button" value="for 사용 클릭" id="btn" class="btn">
+    <input type="button" value="each 사용 클릭" id="btn2" class="btn">
+     <input type="button" value="select의 모든 값 얻기" id="btn3" class="btn">
+    <div id="output"></div>
+</body>
+</html>
