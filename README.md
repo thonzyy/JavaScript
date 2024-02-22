@@ -1,2 +1,2 @@
 0# JavaScriptooㅐgg
-pp###=oㅐㅐiiiㅑㅑkㅇㅇ
+pp###=oㅐㅐiiiㅑㅑkㅇㅇi
